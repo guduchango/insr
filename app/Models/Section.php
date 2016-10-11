@@ -21,4 +21,18 @@ class Section extends Model
         return $this->belongsTo(Department::class);
     }
 
+    /* Mutators */
+
+    /* set */
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = strtolower($value);
+    }
+
+    /* get */
+    public function getNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
 }

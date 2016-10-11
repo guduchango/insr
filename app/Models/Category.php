@@ -35,4 +35,28 @@ class Category extends Model
 
         return $this->belongsToMany(Category::class,'companies_categories','company_id','category_id');
     }
+
+    /* Mutators */
+
+    /* set */
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = strtolower($value);
+    }
+
+    public function setDescriptionAttribute($value)
+    {
+        $this->attributes['description'] = strtolower($value);
+    }
+
+    /* get */
+    public function getNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
+    public function getDescriptionAttribute($value)
+    {
+        return ucfirst($value);
+    }
 }
