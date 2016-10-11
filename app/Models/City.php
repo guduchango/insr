@@ -27,4 +27,19 @@ class City extends Model
 
         return $this->hasMany(Department::class);
     }
+
+    /* Mutators */
+
+    /* set */
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = strtolower($value);
+    }
+
+    /* get */
+    public function getNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
 }

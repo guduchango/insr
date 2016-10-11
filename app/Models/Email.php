@@ -21,5 +21,19 @@ class Email extends Model
 
         return $this->belongsTo(Company::class);
     }
+
+    /* Mutators */
+
+    /* set */
+    public function setAddressAttribute($value)
+    {
+        $this->attributes['address'] = strtolower($value);
+    }
+
+    /* get */
+    public function getAddressAttribute($value)
+    {
+        return ucfirst($value);
+    }
     
 }

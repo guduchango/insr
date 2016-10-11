@@ -20,7 +20,7 @@ class CategoriesTableSeeder extends Seeder
 
             //Creo la categoria padre con parent=0
             $category = Category::create([
-                'name' => ''.$var['name'],
+                'name' => ''.strtolower($var['name']),
                 'url' => $var['url'],
                 'status' => 1,
                 'parent_id' => 0,

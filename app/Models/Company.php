@@ -2,10 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Traits\CompanyTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
+    use CompanyTrait;
+
+
     protected $table = 'companies';
 
     protected $fillable = [
@@ -70,7 +74,56 @@ class Company extends Model
 
     public function categories(){
         
-        return $this->belongsToMany(Category::class,'companies_categories','category_id','company_id');
+        return $this->belongsToMany(Category::class,'companies_categories','company_id','category_id');
+    }
+
+    /* Mutators */
+
+    /* set */
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = strtolower($value);
+    }
+
+    public function setAddressAttribute($value)
+    {
+        $this->attributes['address'] = strtolower($value);
+    }
+
+    public function setWebAttribute($value)
+    {
+        $this->attributes['web'] = strtolower($value);
+    }
+
+    public function setSloganAttribute($value)
+    {
+        $this->attributes['slogan'] = strtolower($value);
+    }
+
+    public function setDescriptionAttribute($value)
+    {
+        $this->attributes['description'] = strtolower($value);
+    }
+
+    /* get */
+    public function getNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
+    public function getAddressAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
+    public function getSloganAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
+    public function getDescriptionAttribute($value)
+    {
+        return ucfirst($value);
     }
 
 }

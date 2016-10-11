@@ -27,4 +27,18 @@ class Department extends Model
 
         return $this->hasMany(Section::class);
     }
+
+    /* Mutators */
+
+    /* set */
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = strtolower($value);
+    }
+
+    /* get */
+    public function getNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
 }
