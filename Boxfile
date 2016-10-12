@@ -12,10 +12,10 @@ global:
     - CACHE_DRIVER: file
     - SESSION_DRIVER: file
     - MAIL_DRIVER: smtp
-    - MAIL_HOST:
+    - MAIL_HOST: mail.insanrafael.com.ar
     - MAIL_PORT: 587
-    - MAIL_USERNAME:
-    - MAIL_PASSWORD:
+    - MAIL_USERNAME: fake@insanrafael.com.ar
+    - MAIL_PASSWORD: S6ecHVKr4VdO
     - MAIL_ENCRYPTION: null
     - CACHE_DRIVER: file
     - QUEUE_DRIVER: database
