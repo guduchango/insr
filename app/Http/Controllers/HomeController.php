@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Company;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     /**
      * Show the application dashboard.
@@ -16,7 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $companies = (new Company())->mostSought();
-        return view('guests.home',compact('companies'));
+        return view('home');
     }
 }
