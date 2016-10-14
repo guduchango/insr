@@ -20,3 +20,8 @@ Route::get('/users',function(){
     return view('users.home');
 
 })->name('users.index');
+
+
+Route::get('admin', function () {
+    return view('admin_template');
+});
