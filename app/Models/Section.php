@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Traits\SectionTrait;
 
-class Section extends Model
+class Section extends BaseModel
 {
+    use SectionTrait;
+
     protected $table = 'sections';
 
     protected $fillable = [

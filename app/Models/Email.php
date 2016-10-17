@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Email extends Model
+class Email extends BaseModel
 {
     protected $table = 'emails';
 
@@ -30,10 +28,5 @@ class Email extends Model
         $this->attributes['address'] = strtolower($value);
     }
 
-    /* get */
-    public function getAddressAttribute($value)
-    {
-        return ucfirst($value);
-    }
     
 }
