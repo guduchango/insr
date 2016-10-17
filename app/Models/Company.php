@@ -3,11 +3,11 @@
 namespace App\Models;
 
 use App\Models\Traits\CompanyTrait;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Traits\Uuids;
 
-class Company extends Model
+class Company extends BaseModel
 {
-    use CompanyTrait;
+    use Uuids,CompanyTrait;
 
 
     protected $table = 'companies';

@@ -178,6 +178,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /* Externals */
+        UxWeb\SweetAlert\SweetAlertServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class
+
     ],
 
     /*
@@ -225,6 +229,10 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        /* Externals*/
+        'Uuid' => Webpatser\Uuid\Uuid::class,
+        'Alert' => UxWeb\SweetAlert\SweetAlert::class,
+        'Image'     => Intervention\Image\Facades\Image::class
 
     ],
 
