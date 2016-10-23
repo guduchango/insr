@@ -25,7 +25,7 @@ class Email extends BaseModel
     /* set */
     public function setAddressAttribute($value)
     {
-        $this->attributes['address'] = strtolower($value);
+        $this->attributes['address'] = $this->gf->setValue($value);
     }
 
     

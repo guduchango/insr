@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\Traits\CategoryTrait;
+
 class Category extends BaseModel
 {
+    use CategoryTrait;
     protected $table = 'categories';
 
     protected $fillable = [
@@ -39,12 +42,12 @@ class Category extends BaseModel
     /* set */
     public function setNameAttribute($value)
     {
-        $this->attributes['name'] = strtolower($value);
+        $this->attributes['name'] = $this->gf->setValue($value);
     }
 
     public function setDescriptionAttribute($value)
     {
-        $this->attributes['description'] = strtolower($value);
+        $this->attributes['description'] = $this->gf->setValue($value);
     }
 
     /* get */

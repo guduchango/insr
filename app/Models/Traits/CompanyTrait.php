@@ -4,35 +4,68 @@ namespace App\Models\Traits;
 trait CompanyTrait
 {
 
-    public function getAll()
+    /* Scopes */
+    public function scopeMostSought($query)
     {
-        return $this->all();
+        return $query->limit(10)->get();
     }
 
-    public function mostSought()
-    {
-        return $this->limit(10)->get();
-    }
-
-    public function getByUsers($user_id)
+    public function scopeGetByUsers($query,$user_id)
     {
 
-        return $this->where('user_id', $user_id)
+        return $query->where('user_id', $user_id)
             ->orderBy('id', 'desc')
             ->get();
     }
 
-    public function find($company_id)
-    {
+    /* Mutators */
 
-        return $this->find($company_id);
+    /* set */
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = $this->gf->setValue($value);
     }
 
-    public function store($companyArray)
+    public function setAddressAttribute($value)
     {
-
-        $this->fill($companyArray);
-        return $this->save();
+        $this->attributes['address'] = $this->gf->setValue($value);
     }
+
+    public function setWebAttribute($value)
+    {
+        $this->attributes['web'] = $this->gf->setValue($value);
+    }
+
+    public function setSloganAttribute($value)
+    {
+        $this->attributes['slogan'] = $this->gf->setValue($value);
+    }
+
+    public function setUrlAttribute($value)
+    {
+        $this->attributes['url'] = $this->gf->setValue(str_slug($value));
+    }
+
+    /* get */
+    public function getNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
+    public function getAddressAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
+    public function getSloganAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
+    public function getDescriptionAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
 
 }

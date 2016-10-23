@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Section;
 use Illuminate\Http\Request;
 use App\Models\Company;
@@ -12,7 +13,6 @@ class UsersController extends Controller
 
     public function index()
     {
-
         $user = Auth::user();
         return view('users.index',compact('user'));
     }
@@ -34,10 +34,12 @@ class UsersController extends Controller
 
         $user = Auth::user();
         $sections = (new Section())->getOrderByName();
+        $subcategories = (new Category())->getSubcategories();
 
         $data=[
             'user' => $user,
             'sections' => $sections,
+            'subcategories' => $subcategories
         ];
 
         return view('users.companies.create',$data);
@@ -46,8 +48,21 @@ class UsersController extends Controller
     public function companiesStore(Request $request, $user_id)
     {
 
+        $user = Auth::user();
+
+        $this->validate($request, [
+            'name' => 'required|unique:companies',
+            'category_id' => 'required|integer',
+        ]);
+
         $companyArray = $request->all();
-        (new Company())->store($companyArray);
+        $companyArray['user_id']=$user->id;
+
+        $company = new Company();
+
+        $company->fill($companyArray);
+        $company->save();
+        $company->categories()->attach($this->id);
 
         return redirect(route('users.companies.index'));
     }

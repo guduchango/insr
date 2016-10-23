@@ -51,7 +51,6 @@ $factory->define(App\Models\Social::class, function (Faker\Generator $faker) {
 $factory->define(App\Models\Company::class, function (Faker\Generator $faker) {
 
     $name = $faker->company;
-    $url = Gf::safeUrl($name);
 
     $userArray = User::all()->pluck('id')->toArray();
     $sectionArray = Section::all()->pluck('id')->toArray();
@@ -60,7 +59,7 @@ $factory->define(App\Models\Company::class, function (Faker\Generator $faker) {
         'name' => $faker->unique()->company,
         'address' => $faker->streetName,
         'slogan' => $name,
-        'url' => $url,
+        'url' => $name,
         'logo_status' => $faker->randomElement(['1','0']),
         'description' => $faker->randomElement(['1','0']),
         'email' => $faker->unique()->safeEmail,

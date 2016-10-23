@@ -2,21 +2,17 @@
 
 namespace App\Models;
 
+use App\Helpers\Gf;
 use Illuminate\Database\Eloquent\Model;
 
 class BaseModel extends Model
 {
+    protected $gf;
 
-    public function findObject($id)
+    public function __construct($attributes=array())
     {
-
-        return $this->find($id);
+        $this->gf = new Gf();
+        parent::__construct($attributes);
     }
-
-
-
-
-
-
 
 }
