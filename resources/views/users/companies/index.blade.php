@@ -41,15 +41,15 @@
                             <td>
                                 <div class="col-sm-1 col-md-1 col-xs-2 col-lg-1">
                                     <a title="Actualizar"
-                                       href="{{route('users.companies.edit',['user'=>$user->id,'company'=>$company->id])}}">
+                                       href="{{route('users.companies.edit',['user'=>$user->uuid,'company'=>$company->uuid])}}">
                                         <span class="badge bg-blue"><i class="fa fa-pencil"></i></span>
                                     </a>
                                 </div>
                                 <div class="col-sm-1 col-md-1 col-xs-2 col-lg-1">
-                                    <form class="form-inline" method="post" id="form-delete-{{$company->id}}"
-                                          action="{{route('users.companies.destroy',['user_id'=>$user->id,'company_id'=>$company->id])}}">
-                                        <a class="gdelete" title="Eliminar" href="#" data-id="{{$company->id}}"
-                                           data-route="{{route('users.companies.destroy',['user_id'=>$user->id,'company_id'=>$company->id])}}">
+                                    <form class="form-inline" method="post" id="form-delete-{{$company->uuid}}"
+                                          action="{{route('users.companies.destroy',['user_id'=>$user->uuid,'company_id'=>$company->uuid])}}">
+                                        <a class="gdelete" title="Eliminar" href="#" data-id="{{$company->uuid}}"
+                                           data-route="{{route('users.companies.destroy',['user_id'=>$user->uuid,'company_id'=>$company->uuid])}}">
                                             <span class="badge bg-red"><i class="fa fa-remove"></i></span></a>
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}

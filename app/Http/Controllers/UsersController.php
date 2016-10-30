@@ -80,9 +80,20 @@ class UsersController extends Controller
 
     public function companiesEdit($user_uuid, $company_uuid)
     {
-
+        $user = Auth::user();
+        $sections = (new Section())->getOrderByName();
+        $subcategories = (new Category())->getSubcategories();
         $company = (new Company())->findUuid($company_uuid);
-        return view('users.companies.edit', companct($company));
+
+        $data = [
+            'user' => $user,
+            'sections' => $sections,
+            'subcategories' => $subcategories,
+            'company' => $company
+        ];
+
+
+        return view('users.companies.edit', $data);
     }
 
 

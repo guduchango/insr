@@ -3,9 +3,8 @@ namespace App\Helpers;
 
 class Gf {
 
-    public function __construct()
-    {
-
+    public static function hola(){
+        echo "hola mundo desde hleper";
     }
 
     public function setValue($value){
