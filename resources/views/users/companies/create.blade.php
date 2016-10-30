@@ -26,7 +26,7 @@
                     </div>
                 @endif
                 <form role="form" method="post" enctype="multipart/form-data"
-                      action="{{route('users.companies.store',['user_id',$user->id])}}">
+                      action="{{route('users.companies.store',['user_id'=>$user->uuid])}}">
                     {{ csrf_field() }}
                     <div class="box-body">
                         <div class="form-group">

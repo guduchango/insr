@@ -15,4 +15,9 @@ class BaseModel extends Model
         parent::__construct($attributes);
     }
 
+    public function scopeFindUuid($query,$uuid){
+
+        return $query->where('uuid',$uuid)->first();
+    }
+
 }

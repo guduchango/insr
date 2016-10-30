@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="col-sm-3 col-md-2 col-xs-5 col-lg-2 pull-right">
-                            <a href="{{route('users.companies.create',['user_id'=>$user->id])}}" type="button" class="btn btn-block btn-success"><i
+                            <a href="{{route('users.companies.create',['user_id'=>$user->uuid])}}" type="button" class="btn btn-block btn-success"><i
                                         class="fa  fa-plus"></i> Crear</a>
                         </div>
                     </div>

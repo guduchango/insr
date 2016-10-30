@@ -16,14 +16,20 @@ Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 Auth::routes();
 
-Route::get('/users','UsersController@index')->name('users.index');
-Route::get('/users/{user_id}/companies','UsersController@companiesIndex')->name('users.companies.index');
-Route::get('/users/{user_id}/companies/create','UsersController@companiesCreate')->name('users.companies.create');
-Route::post('/users/{user_id}/companies','UsersController@companiesStore')->name('users.companies.store');
-Route::get('/users/{user_id}/companies/{company_id}/edit','UsersController@caompaniesEdit')
+Route::get('/users','UsersController@index')
+    ->name('users.index');
+Route::get('/users/{user_uuid}/companies','UsersController@companiesIndex')
+    ->name('users.companies.index');
+Route::get('/users/{user_uuid}/companies/create','UsersController@companiesCreate')
+    ->name('users.companies.create');
+Route::post('/users/{user_uuid}/companies','UsersController@companiesStore')
+    ->name('users.companies.store');
+Route::get('/users/{user_uuid}/companies/{company_uuid}/edit','UsersController@caompaniesEdit')
     ->name('users.companies.edit');
-Route::put('/users/{user_id}/companies/{company_id}','UsersController@companiesUpdate')->name('users.companies.update');
-Route::delete('/users/{user_id}/companies/','UsersController@companiesUpdate')->name('users.companies.destroy');
+Route::put('/users/{user_uuid}/companies/{company_uuid}','UsersController@companiesUpdate')
+    ->name('users.companies.update');
+Route::delete('/users/{user_uuid}/companies/','UsersController@companiesUpdate')
+    ->name('users.companies.destroy');
 
 
 Route::get('admin', function () {

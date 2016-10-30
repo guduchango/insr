@@ -10,7 +10,7 @@ trait CompanyTrait
         return $query->limit(10)->get();
     }
 
-    public function scopeGetByUsers($query,$user_id)
+    public function scopeGetByUsers($query, $user_id)
     {
 
         return $query->where('user_id', $user_id)
@@ -31,19 +31,9 @@ trait CompanyTrait
         $this->attributes['address'] = $this->gf->setValue($value);
     }
 
-    public function setWebAttribute($value)
-    {
-        $this->attributes['web'] = $this->gf->setValue($value);
-    }
-
     public function setSloganAttribute($value)
     {
         $this->attributes['slogan'] = $this->gf->setValue($value);
-    }
-
-    public function setUrlAttribute($value)
-    {
-        $this->attributes['url'] = $this->gf->setValue(str_slug($value));
     }
 
     /* get */
@@ -66,6 +56,12 @@ trait CompanyTrait
     {
         return ucfirst($value);
     }
+
+    /* Special functions */
+    public function setUrl(){
+       $this->attributes['url']=  $this->gf->setValue(str_slug( $this->attributes['name']));
+    }
+
 
 
 }

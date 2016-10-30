@@ -12,21 +12,23 @@ class Company extends BaseModel
     protected $table = 'companies';
 
     protected $fillable = [
+        'uuid',
         'name',
         'address',
-        'web',
-        'facebook',
-        'twitter',
         'slogan',
+        'email',
         'url',
-        'logo',
-        'status',
+        'logo_status',
         'description',
         'user_id',
         'province_id',
-        'city_id',
         'department_id',
         'section_id'
+    ];
+
+    protected $attributes = [
+        'province_id' => 12,
+        'department_id' => 15
     ];
 
 
