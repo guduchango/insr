@@ -13,6 +13,10 @@ class Phone extends BaseModel
         'company_id'
     ];
 
+    protected $attributes = [
+        'phone_type' => 'mobile',
+    ];
+
 
     /* BELONG TO */
 

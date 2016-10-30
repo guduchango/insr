@@ -26,7 +26,7 @@
                     </div>
                 @endif
                 <form role="form" method="post" enctype="multipart/form-data"
-                      action="{{route('users.companies.store',['user_id',$user->id])}}">
+                      action="{{route('users.companies.store',['user_id'=>$user->uuid])}}">
                     {{ csrf_field() }}
                     <div class="box-body">
                         <div class="form-group">
@@ -46,6 +46,15 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="default">Subcategoría</label>
+                            <select name="category_id" class="form-control">
+                                @foreach($subcategories as $subcategory)
+                                    <option value="{{$subcategory->id}}">{{$subcategory->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
                             <label for="default">Localidad</label>
                             <select name="section_id" class="form-control">
                                 @foreach($sections as $section)
@@ -57,12 +66,12 @@
                         <div class="row">
                             <div class="form-group col-md-2">
                                 <label>Prefijo</label>
-                                <input type="number" name="prefix" value="{{old('prefix')}}" class="form-control "
+                                <input type="number" name="mobile_prefix" value="{{old('mobile_prefix')}}" class="form-control "
                                        placeholder="">
                             </div>
                             <div class="form-group col-md-10">
                                 <label>Celular</label>
-                                <input type="number" name="number" value="{{old('number')}}" class="form-control "
+                                <input type="number" name="mobile_number" value="{{old('mobile_number')}}" class="form-control "
                                        placeholder="">
                             </div>
                         </div>
@@ -73,28 +82,14 @@
                                    placeholder="">
                         </div>
                         <div class="form-group">
-                            <label for="default">Web</label>
-                            <input type="url" name="web" value="{{old('web')}}" class="form-control" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="default">Facebook</label>
-                            <input type="url" name="facebook" value="{{old('facebook')}}" class="form-control"
-                                   placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="default">Twitter</label>
-                            <input type="url" name="twitter" value="{{old('twitter')}}" class="form-control"
-                                   placeholder="">
-                        </div>
-                        <div class="form-group">
                             <label for="default">Descripción</label>
                             <textarea name="description" class="form-control" rows="3"
                                       placeholder="">{{old('description')}}</textarea>
                         </div>
-                        <div class="form-group">
-                            <label>Imágen/es</label>
-                            <input name="photos[]" type="file" multiple>
-                        </div>
+                        {{--<div class="form-group">--}}
+                            {{--<label>Imágen/es</label>--}}
+                            {{--<input name="photos[]" type="file" multiple>--}}
+                        {{--</div>--}}
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">

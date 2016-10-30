@@ -16,12 +16,12 @@ class CreateCompaniesTable extends Migration
             $table->increments('id');
             $table->uuid('uuid')->unique();
             $table->string('name');
-            $table->string('address');
-            $table->string('slogan');
+            $table->string('address')->nullable();
+            $table->string('slogan')->nullable();
             $table->string('email');
             $table->string('url');
-            $table->boolean('logo_status');
-            $table->string('description');
+            $table->boolean('logo_status')->default(false);
+            $table->string('description')->nullable();
             $table->integer('user_id')->unsigned();
             $table->integer('province_id')->unsigned();
             $table->integer('department_id')->unsigned();

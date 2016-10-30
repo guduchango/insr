@@ -9,25 +9,26 @@ class Company extends BaseModel
 {
     use Uuids,CompanyTrait;
 
-
     protected $table = 'companies';
 
     protected $fillable = [
+        'uuid',
         'name',
         'address',
-        'web',
-        'facebook',
-        'twitter',
         'slogan',
+        'email',
         'url',
-        'logo',
-        'status',
+        'logo_status',
         'description',
         'user_id',
         'province_id',
-        'city_id',
         'department_id',
         'section_id'
+    ];
+
+    protected $attributes = [
+        'province_id' => 12,
+        'department_id' => 15
     ];
 
 
@@ -70,6 +71,10 @@ class Company extends BaseModel
         return $this->hasMany(Email::class,'company_id','id');
     }
 
+    public function socials(){
+        return $this->hasMany(Social::class,'company_id','id');
+    }
+
     /* BELONG TO MANY */
 
     public function categories(){
@@ -77,53 +82,8 @@ class Company extends BaseModel
         return $this->belongsToMany(Category::class,'companies_categories','company_id','category_id');
     }
 
-    /* Mutators */
 
-    /* set */
-    public function setNameAttribute($value)
-    {
-        $this->attributes['name'] = strtolower($value);
-    }
 
-    public function setAddressAttribute($value)
-    {
-        $this->attributes['address'] = strtolower($value);
-    }
 
-    public function setWebAttribute($value)
-    {
-        $this->attributes['web'] = strtolower($value);
-    }
-
-    public function setSloganAttribute($value)
-    {
-        $this->attributes['slogan'] = strtolower($value);
-    }
-
-    public function setDescriptionAttribute($value)
-    {
-        $this->attributes['description'] = strtolower($value);
-    }
-
-    /* get */
-    public function getNameAttribute($value)
-    {
-        return ucfirst($value);
-    }
-
-    public function getAddressAttribute($value)
-    {
-        return ucfirst($value);
-    }
-
-    public function getSloganAttribute($value)
-    {
-        return ucfirst($value);
-    }
-
-    public function getDescriptionAttribute($value)
-    {
-        return ucfirst($value);
-    }
 
 }

@@ -22,7 +22,7 @@ class Province extends BaseModel
     /* set */
     public function setNameAttribute($value)
     {
-        $this->attributes['name'] = strtolower($value);
+        $this->attributes['name'] = $this->gf->setValue($value);
     }
 
     /* get */
