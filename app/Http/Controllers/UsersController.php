@@ -59,6 +59,7 @@ class UsersController extends Controller
         $user = Auth::user();
 
         $arrayValues = $request->all();
+
         $category_id = $arrayValues['category_id'];
         $arrayValues['user_id'] = $user->id;
 
@@ -72,28 +73,52 @@ class UsersController extends Controller
         $phone->company_id = $company->id;
         $phone->prefix = $arrayValues['mobile_prefix'];
         $phone->number = $arrayValues['mobile_number'];
-        $phone->phone_type = $arrayValues['phone_type'];
         $phone->save();
 
-        return redirect(route('users.companies.index'));
+        return redirect(route('users.companies.index',['user_uuid' => $user->uuid]));
     }
 
     public function companiesEdit($user_uuid, $company_uuid)
     {
-
+        $user = Auth::user();
+        $sections = (new Section())->getOrderByName();
+        $subcategories = (new Category())->getSubcategories();
         $company = (new Company())->findUuid($company_uuid);
-        return view('users.companies.edit', companct($company));
+
+        $data = [
+            'user' => $user,
+            'sections' => $sections,
+            'subcategories' => $subcategories,
+            'company' => $company
+        ];
+
+
+        return view('users.companies.edit', $data);
     }
 
 
     public function companiesUpdate(Request $request, $user_uuid, $company_uuid)
     {
 
+        $user = Auth::user();
+
+        $arrayValues = $request->all();
+        $category_id = $arrayValues['category_id'];
+        $arrayValues['user_id'] = $user->id;
+
         $companyArray = $request->all();
+
         $company = (new Company())->findUuid($company_uuid);
+        $phoneArray['prefix'] = $companyArray['mobile_prefix'];
+        $phoneArray['number'] = $companyArray['mobile_number'];
+        $phoneArray['company_id'] = $company->id;
+
+
         $company->fill($companyArray);
         $company->save();
+        $company->categories()->attach($category_id);
+        $company->phones()->create($phoneArray);
 
-        return redirect(route('users.companies.index'));
+        return redirect(route('users.companies.index',['user_uuid' => $user->uuid]));
     }
 }

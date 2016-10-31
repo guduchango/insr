@@ -36,7 +36,7 @@
 
                         <div class="form-group">
                             <label for="default">Slogan</label>
-                            <input type="input" name="name" value="{{old('name')}}" class="form-control" placeholder="">
+                            <input type="input" name="slogan" value="{{old('slogan')}}" class="form-control" placeholder="">
                         </div>
 
                         <div class="form-group">

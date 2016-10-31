@@ -1,4 +1,5 @@
 <?php
+use App\Helpers\Gf;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +25,11 @@ Route::get('/users/{user_uuid}/companies/create','UsersController@companiesCreat
     ->name('users.companies.create');
 Route::post('/users/{user_uuid}/companies','UsersController@companiesStore')
     ->name('users.companies.store');
-Route::get('/users/{user_uuid}/companies/{company_uuid}/edit','UsersController@caompaniesEdit')
+Route::get('/users/{user_uuid}/companies/{company_uuid}/edit','UsersController@companiesEdit')
     ->name('users.companies.edit');
 Route::put('/users/{user_uuid}/companies/{company_uuid}','UsersController@companiesUpdate')
+    ->name('users.companies.update');
+Route::patch('/users/{user_uuid}/companies/{company_uuid}','UsersController@companiesUpdate')
     ->name('users.companies.update');
 Route::delete('/users/{user_uuid}/companies/','UsersController@companiesUpdate')
     ->name('users.companies.destroy');
@@ -38,6 +41,6 @@ Route::get('admin', function () {
 
 Route::get('hola',function(){
 
-    dd(Company::all());
+    hola();
 
 });
