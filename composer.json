@@ -26,7 +26,7 @@
             "App\\": "app/"
         },
         "files": [
-            "app/Helpers/Gf.php"
+            "app/Helpers/ComposerGlobalFunctions.php"
         ]
     },
     "autoload-dev": {

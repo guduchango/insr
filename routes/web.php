@@ -29,6 +29,8 @@ Route::get('/users/{user_uuid}/companies/{company_uuid}/edit','UsersController@c
     ->name('users.companies.edit');
 Route::put('/users/{user_uuid}/companies/{company_uuid}','UsersController@companiesUpdate')
     ->name('users.companies.update');
+Route::patch('/users/{user_uuid}/companies/{company_uuid}','UsersController@companiesUpdate')
+    ->name('users.companies.update');
 Route::delete('/users/{user_uuid}/companies/','UsersController@companiesUpdate')
     ->name('users.companies.destroy');
 
@@ -39,6 +41,6 @@ Route::get('admin', function () {
 
 Route::get('hola',function(){
 
-    echo (new Gf)->hola();
+    hola();
 
 });

@@ -26,7 +26,7 @@
                     </div>
                 @endif
                 <form role="form" method="post" enctype="multipart/form-data"
-                      action="{{route('users.companies.store',['user_id'=>$user->uuid])}}">
+                      action="{{route('users.companies.update',['user_id'=>$user->uuid,'company_id'=>$company->uuid])}}">
                     {{ csrf_field() }}
                     {{ method_field('PATCH') }}
                     <div class="box-body">
@@ -50,7 +50,7 @@
                             <label for="default">Subcategoría</label>
                             <select name="category_id" class="form-control">
                                 @foreach($subcategories as $subcategory)
-                                    <option value="{{$subcategory->id}}">{{$subcategory->name}}</option>
+                                    <option {{inEqual($subcategory->id,$company->categories->first()->id)}} value="{{$subcategory->id}}">{{$subcategory->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -59,7 +59,7 @@
                             <label for="default">Localidad</label>
                             <select name="section_id" class="form-control">
                                 @foreach($sections as $section)
-                                    <option value="{{$section->id}}">{{$section->name}}</option>
+                                    <option {{inEqual($section->id,$company->section_id)}} value="{{$section->id}}">{{$section->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -67,25 +67,25 @@
                         <div class="row">
                             <div class="form-group col-md-2">
                                 <label>Prefijo</label>
-                                <input type="number" name="mobile_prefix" value="{{old('mobile_prefix')}}" class="form-control "
+                                <input type="number" name="mobile_prefix" value="{{old('mobile_prefix',$company->phones->first()->prefix)}}" class="form-control "
                                        placeholder="">
                             </div>
                             <div class="form-group col-md-10">
                                 <label>Celular</label>
-                                <input type="number" name="mobile_number" value="{{old('mobile_number')}}" class="form-control "
+                                <input type="number" name="mobile_number" value="{{old('mobile_number',$company->phones->first()->number)}}" class="form-control "
                                        placeholder="">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="default">Email</label>
-                            <input type="email" name="email" value="{{old('email')}}" class="form-control"
+                            <input type="email" name="email" value="{{old('email',$company->email)}}" class="form-control"
                                    placeholder="">
                         </div>
                         <div class="form-group">
                             <label for="default">Descripción</label>
                             <textarea name="description" class="form-control" rows="3"
-                                      placeholder="">{{old('description')}}</textarea>
+                                      placeholder="">{{old('description',$company->description)}}</textarea>
                         </div>
                         {{--<div class="form-group">--}}
                         {{--<label>Imágen/es</label>--}}

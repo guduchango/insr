@@ -31,6 +31,7 @@
                         <th>Nombre</th>
                         <th>Categoría</th>
                         <th>Subcategoría</th>
+                        <th>Sector</th>
                         <th>Acción</th>
                     </tr>
                     @foreach($companies as $company)
@@ -38,6 +39,9 @@
                         <tr>
                             <td>{{$company->id}}</td>
                             <td>{{$company->name}}</td>
+                            <td>{{$company->categories->first()->parent->name}}</td>
+                            <td>{{$company->categories->first()->name}}</td>
+                            <td>{{$company->section->name}}</td>
                             <td>
                                 <div class="col-sm-1 col-md-1 col-xs-2 col-lg-1">
                                     <a title="Actualizar"
