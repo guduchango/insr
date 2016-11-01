@@ -36,9 +36,8 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->redirectTo=route('users.index');
+        $this->redirectTo = route('users.index');
         $this->middleware('guest');
-
     }
 
     /**

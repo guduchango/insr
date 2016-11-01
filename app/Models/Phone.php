@@ -15,6 +15,7 @@ class Phone extends BaseModel
 
     protected $attributes = [
         'phone_type' => 'mobile',
+        'prefix' => 0260
     ];
 
 

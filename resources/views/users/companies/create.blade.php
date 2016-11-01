@@ -66,7 +66,7 @@
                         <div class="row">
                             <div class="form-group col-md-2">
                                 <label>Prefijo</label>
-                                <input type="number" name="mobile_prefix" value="{{old('mobile_prefix')}}" class="form-control "
+                                <input type="number" name="mobile_prefix" value="{{old('mobile_prefix',260)}}" class="form-control "
                                        placeholder="">
                             </div>
                             <div class="form-group col-md-10">

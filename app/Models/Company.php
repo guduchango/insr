@@ -28,7 +28,7 @@ class Company extends BaseModel
 
     protected $attributes = [
         'province_id' => 12,
-        'department_id' => 15
+        'department_id' => 15,
     ];
 
 
